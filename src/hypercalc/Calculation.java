@@ -13,6 +13,7 @@ public class Calculation {
     
     private double operator1 = 0;
     private double operator2 = 0;
+    private final int MAX = 1000000;
     
     /**************************************************************************/
     // CONSTRUCTOR
@@ -31,6 +32,10 @@ public class Calculation {
     
     /**************************************************************************/
     // GETTER / SETTER METHODS
+    
+    public int getMAX() {
+        return MAX;
+    }
 
     public double getOperator1() {
         return operator1;
@@ -54,6 +59,11 @@ public class Calculation {
     public double Sum ()
     {
         return operator1 + operator2;
+    }
+    
+    public double Multiplication ()
+    {
+        return operator1 * operator2;
     }
     
     public double Substraction ()
@@ -83,14 +93,14 @@ public class Calculation {
     }
     
     public int Reverse ()
-    {
+    {   
         int iop1 = (int)operator1;
         int iop2 = (int)operator2;
         
         int i = 0;
         boolean found = false;
         
-        while (i < 1000000 && !found)
+        while (i < MAX && !found)
         {
             int mul = iop1 * i;
             

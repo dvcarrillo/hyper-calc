@@ -68,7 +68,7 @@ public class Window extends javax.swing.JFrame {
 
         jLabel3.setText("Type operator 2:");
 
-        selectedOperation.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sum", "Substraction", "Division", "Quotient", "Rest", "Reverse" }));
+        selectedOperation.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sum", "Substraction", "Multiplication", "Division", "Quotient", "Rest", "Reverse" }));
         selectedOperation.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 selectedOperationActionPerformed(evt);
@@ -77,7 +77,7 @@ public class Window extends javax.swing.JFrame {
 
         jLabel4.setText("Operation:");
 
-        Calculate.setText("CALCULATE!");
+        Calculate.setText("Calculate");
         Calculate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CalculateActionPerformed(evt);
@@ -141,9 +141,9 @@ public class Window extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(operator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(selectedOperation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(12, 12, 12)
                 .addComponent(Calculate)
-                .addGap(18, 18, 18))
+                .addContainerGap())
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Result", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("American Typewriter", 0, 14))); // NOI18N
@@ -219,19 +219,26 @@ public class Window extends javax.swing.JFrame {
                     break;
             case 1: Result.setText(Double.toString(calculation.Substraction()));
                     break;
-            case 2: Result.setText(Double.toString(calculation.Division()));
+            case 2: Result.setText(Double.toString(calculation.Multiplication()));
                     break;
-            case 3: Result.setText(Integer.toString(calculation.Quotient()));
+            case 3: Result.setText(Double.toString(calculation.Division()));
                     break;
-            case 4: Result.setText(Integer.toString(calculation.Rest()));
+            case 4: Result.setText(Integer.toString(calculation.Quotient()));
                     break;
-            case 5: String text = "Reverse of " + 
+            case 5: Result.setText(Integer.toString(calculation.Rest()));
+                    break;
+            case 6: String text = "Reverse of " + 
                     (int)calculation.getOperator1() + " mod " +
                     (int)calculation.getOperator2() + ": ";
-                    text += Integer.toString(calculation.Reverse());
+            
+                    if ((calculation.Reverse()) == calculation.getMAX())
+                        text += "Error";
+                    else
+                        text += Integer.toString(calculation.Reverse());
+                    
                     Result.setText(text);
                     break;
-            default : Result.setText("ERROR");
+            default : Result.setText("Error");
         }
         
         repaint();
