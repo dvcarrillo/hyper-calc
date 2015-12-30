@@ -3,6 +3,7 @@
 Right now, it supports these operations:
   - Sum
   - Substraction
+  - Multiplication
   - Division
   - Getting quotient
   - Getting rest
